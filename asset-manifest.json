@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "//denenergi.github.io/my-react-app/static/css/main.c2000437.css",
+    "main.js": "//denenergi.github.io/my-react-app/static/js/main.3ab212fb.js",
+    "static/js/453.ad6eb26e.chunk.js": "//denenergi.github.io/my-react-app/static/js/453.ad6eb26e.chunk.js",
+    "index.html": "//denenergi.github.io/my-react-app/index.html",
+    "main.c2000437.css.map": "//denenergi.github.io/my-react-app/static/css/main.c2000437.css.map",
+    "main.3ab212fb.js.map": "//denenergi.github.io/my-react-app/static/js/main.3ab212fb.js.map",
+    "453.ad6eb26e.chunk.js.map": "//denenergi.github.io/my-react-app/static/js/453.ad6eb26e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c2000437.css",
+    "static/js/main.3ab212fb.js"
+  ]
+}
