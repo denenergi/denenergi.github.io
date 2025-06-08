@@ -1,25 +1,39 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
+import Navigation from './components/Navigation';
+import TodayWeather from './pages/TodayWeather';
+import WeeklyWeather from './pages/WeeklyWeather';
+import NotFound from './pages/NotFound';
+import { ThemeProvider } from './contexts/ThemeContext';
+import './styles/global.scss';
+
+const AnimatedRoutes = () => {
+  const location = useLocation();
+
+  return (
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<TodayWeather />} />
+        <Route path="/weekly" element={<WeeklyWeather />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </AnimatePresence>
+  );
+};
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <ThemeProvider>
+        <div className="app">
+          <Navigation />
+          <main className="container">
+            <AnimatedRoutes />
+          </main>
+        </div>
+      </ThemeProvider>
+    </Router>
   );
 }
 

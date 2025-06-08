@@ -1,0 +1,128 @@
+// Theme management
+@mixin theme-aware($property, $key) {
+  @each $theme, $colors in $themes {
+    .theme-#{$theme} & {
+      #{$property}: map-get(map-get($themes, $theme), $key);
+    }
+  }
+}
+
+// Responsive breakpoints
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == "sm" {
+    @media (min-width: $breakpoint-sm) { @content; }
+  }
+  @if $breakpoint == "md" {
+    @media (min-width: $breakpoint-md) { @content; }
+  }
+  @if $breakpoint == "lg" {
+    @media (min-width: $breakpoint-lg) { @content; }
+  }
+  @if $breakpoint == "xl" {
+    @media (min-width: $breakpoint-xl) { @content; }
+  }
+}
+
+// Flexbox helpers
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// Card styles
+@mixin card {
+  @include theme-aware('background-color', 'background-card');
+  @include theme-aware('color', 'text-primary');
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-md;
+  transition: all $transition-normal ease-in-out;
+  
+  &:hover {
+    box-shadow: $shadow-lg;
+  }
+}
+
+// Button styles
+@mixin button-base {
+  padding: $spacing-sm $spacing-lg;
+  border-radius: $border-radius-md;
+  font-weight: 500;
+  transition: all $transition-fast ease-in-out;
+  cursor: pointer;
+  
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+}
+
+@mixin button-primary {
+  @include button-base;
+  @include theme-aware('background-color', 'primary-color');
+  @include theme-aware('color', 'background-card');
+  
+  &:hover:not(:disabled) {
+    @include theme-aware('background-color', 'primary-dark');
+  }
+}
+
+// Input styles
+@mixin input-base {
+  width: 100%;
+  padding: $spacing-sm $spacing-md;
+  @include theme-aware('background-color', 'background-card');
+  @include theme-aware('border-color', 'border-color');
+  @include theme-aware('color', 'text-primary');
+  border-width: 1px;
+  border-style: solid;
+  border-radius: $border-radius-md;
+  font-size: $font-size-base;
+  transition: all $transition-fast ease-in-out;
+  
+  &::placeholder {
+    @include theme-aware('color', 'text-secondary');
+  }
+  
+  &:focus {
+    outline: none;
+    @include theme-aware('border-color', 'primary-color');
+    box-shadow: 0 0 0 2px var(--theme-primary-color-alpha);
+  }
+}
+
+// Page transitions
+@mixin page-transition {
+  animation: fadeIn $transition-normal ease-in-out;
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+// Loading animation
+@mixin loading-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+} 
