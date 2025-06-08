@@ -2,7 +2,7 @@
   "name": "my-react-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://denenergi.github.io/my-react-app.io",
+  "homepage": "https://denenergi.github.io",
   "dependencies": {
     "@types/node": "^16.18.89",
     "@types/react": "^18.2.66",
