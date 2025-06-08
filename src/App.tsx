@@ -1,12 +1,17 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import { AnimatePresence } from 'framer-motion';
-import Navigation from './components/Navigation';
-import TodayWeather from './pages/TodayWeather';
-import WeeklyWeather from './pages/WeeklyWeather';
-import NotFound from './pages/NotFound';
-import { ThemeProvider } from './contexts/ThemeContext';
-import './styles/global.scss';
+import React from "react";
+import {
+  HashRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
+import Navigation from "./components/Navigation";
+import TodayWeather from "./pages/TodayWeather";
+import WeeklyWeather from "./pages/WeeklyWeather";
+import NotFound from "./pages/NotFound";
+import { ThemeProvider } from "./contexts/ThemeContext";
+import "./styles/global.scss";
 
 const AnimatedRoutes = () => {
   const location = useLocation();
